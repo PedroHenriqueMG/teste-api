@@ -1,3 +1,4 @@
+import "express-async-errors";
 import Express from "express";
 import router from "./router";
 import { errorMiddleware } from "./middleware/error";
@@ -7,7 +8,7 @@ app.use(Express.json());
 
 app.use(router);
 
-/* app.use(errorMiddleware); */
+app.use(errorMiddleware);
 app.listen(process.env.PORT, () =>
   console.log(`Server ready on port: ${process.env.PORT}`)
 );
