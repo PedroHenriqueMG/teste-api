@@ -19,6 +19,12 @@ export const document = createDocument({
     description: "Melhor API do Brasil",
     version: "1.0.0",
   },
+  servers: [
+    {
+      url: "https://teste-api-smoky.vercel.app",
+      description: "testando o teste",
+    },
+  ],
   paths: {
     "/signup": {
       post: {
