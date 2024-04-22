@@ -31,12 +31,6 @@ export class SignUpController {
 
     const { password: _, ...userData } = createUser; */
 
-    return res.json({
-      name,
-      email,
-      password,
-      phone,
-      role,
-    });
+    return res.send("funcionou");
   }
 }
