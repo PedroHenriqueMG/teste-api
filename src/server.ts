@@ -6,6 +6,7 @@ import prisma from "./client/client";
 import swaggerui from "swagger-ui-express";
 import { document } from "./swagger/swagger";
 import * as yaml from "yaml";
+import * as fs from "fs"
 
 const app = Express();
 app.use(Express.json());
@@ -21,8 +22,8 @@ prisma
     throw new Error(error.message);
   });
 
-const path = "./swagger/openapi.yml";
-const teste = yaml.parse(path);
+  const file  = fs.readFileSync('./swagger/openapi.yml', 'utf8')
+const teste = yaml.parse(file);
 
 app.use("/docs", swaggerui.serve, swaggerui.setup(teste));
 
