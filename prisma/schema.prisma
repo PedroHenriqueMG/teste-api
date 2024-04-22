@@ -7,7 +7,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Teste{
+model User{
   id String @id @default(cuid())
-  teste String
+  name String
+  password String
+  role String
+  email String  @unique
+  phone String
+  img String  @default("https://i.pravatar.cc/150")
 }
