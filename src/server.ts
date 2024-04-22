@@ -22,7 +22,7 @@ prisma
     throw new Error(error.message);
   });
 
-  const file  = fs.readFileSync('./swagger/openapi.yml', 'utf8')
+  const file  = fs.readFileSync('./src/swagger/openapi.yml', 'utf8')
 const teste = yaml.parse(file);
 
 app.use("/docs", swaggerui.serve, swaggerui.setup(teste));
