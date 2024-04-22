@@ -3,6 +3,11 @@ import { createDocument, extendZodWithOpenApi } from "zod-openapi";
 import { signupSchema } from "../@types/signupSchema";
 import { signInSchema } from "../@types/signinSchema";
 
+import fs from 'fs';
+import path from 'path';
+
+import { stringify } from 'yaml';
+
 extendZodWithOpenApi(z);
 
 const userData = signupSchema.omit({ password: true });
@@ -81,3 +86,9 @@ export const document = createDocument({
     },
   },
 });
+
+
+const yaml = stringify(document, { aliasDuplicateObjects: false });
+
+// eslint-disable-next-line no-sync
+fs.writeFileSync(path.join(__dirname, 'openapi.yml'), yaml);

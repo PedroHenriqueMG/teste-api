@@ -1,0 +1,132 @@
+openapi: 3.0.0
+info:
+  title: Barber Shop API
+  description: Melhor API do Brasil
+  version: 1.0.0
+servers:
+  - url: https://teste-api-smoky.vercel.app
+    description: produção
+  - url: http://localhost:8080/docs/
+    description: desenvolvimento
+paths:
+  /signup:
+    post:
+      tags:
+        - User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Lucas Baiter
+                email:
+                  type: string
+                  format: email
+                  example: lucas@gmail.com
+                password:
+                  type: string
+                  minLength: 6
+                  maxLength: 20
+                  example: "123456"
+                phone:
+                  type: string
+                  example: "1241241241"
+                role:
+                  type: string
+                  example: admin
+              required:
+                - name
+                - email
+                - password
+                - phone
+                - role
+      responses:
+        "200":
+          description: 200 OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: Lucas Baiter
+                  email:
+                    type: string
+                    format: email
+                    example: lucas@gmail.com
+                  phone:
+                    type: string
+                    example: "1241241241"
+                  role:
+                    type: string
+                    example: admin
+                required:
+                  - name
+                  - email
+                  - phone
+                  - role
+        "400":
+          description: Esse email já existe
+  /login:
+    post:
+      tags:
+        - User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: cleitin@gmail.com
+                password:
+                  type: string
+                  minLength: 6
+                  maxLength: 20
+                  example: "123456"
+              required:
+                - email
+                - password
+      responses:
+        "200":
+          description: 200 OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userData:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: Lucas Baiter
+                      email:
+                        type: string
+                        format: email
+                        example: lucas@gmail.com
+                      phone:
+                        type: string
+                        example: "1241241241"
+                      role:
+                        type: string
+                        example: admin
+                    required:
+                      - name
+                      - email
+                      - phone
+                      - role
+                  token:
+                    type: string
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTM0NzMyNzUsImV4cCI6MTcxMzUwMjA3NX0.J9UdB_g2_z_3GQ7ctnRLAIhm3X5FjqPlDlfpo9Rciog
+                required:
+                  - userData
+                  - token
+        "400":
+          description: Email ou senha inválidos

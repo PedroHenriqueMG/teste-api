@@ -21,7 +21,7 @@ prisma
     throw new Error(error.message);
   });
 
-const path = "./swagger/openapi.yaml";
+const path = "./swagger/openapi.yml";
 const teste = yaml.parse(path);
 
 app.use("/docs", swaggerui.serve, swaggerui.setup(teste));
