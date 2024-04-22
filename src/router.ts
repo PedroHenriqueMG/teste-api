@@ -12,8 +12,6 @@ const router = Router();
 router.get("/", (req, res) => {
   res.send("Express on Vercel");
 });
-router.use("/docs", swaggerui.serve);
-router.get("/docs", swaggerui.setup(document));
 router.post("/signup", validate(signupSchema), new SignUpController().create);
 router.post("/signin", validate(signInSchema), new SignInController().login);
 

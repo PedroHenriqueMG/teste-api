@@ -1,9 +1,11 @@
 import "express-async-errors";
 import Express from "express";
-import path from "path";
 import router from "./router";
 import { errorMiddleware } from "./middleware/error";
 import prisma from "./client/client";
+import swaggerui from "swagger-ui-express";
+import { document } from "./swagger/swagger";
+import * as yaml from "yaml";
 
 const app = Express();
 app.use(Express.json());
@@ -19,7 +21,10 @@ prisma
     throw new Error(error.message);
   });
 
-app.use("/docs", Express.static(path.join(__dirname, "public")));
+const path = "./swagger/openapi.yaml";
+const teste = yaml.parse(path);
+
+app.use("/docs", swaggerui.serve, swaggerui.setup(teste));
 
 app.use(errorMiddleware);
 app.listen(process.env.PORT, () =>
