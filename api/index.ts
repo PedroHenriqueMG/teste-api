@@ -7,8 +7,8 @@ app.get("/", async (req, res) => {
   res.send("Express on Vercel");
 });
 
-app.get("/test", async (req, res) => {
-  await prisma
+app.get("/test", (req, res) => {
+  prisma
     .$connect()
     .then(() => {
       return res.send("Conexão com o banco de dados estabelecida com sucesso.");
