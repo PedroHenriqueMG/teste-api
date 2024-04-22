@@ -1,5 +1,5 @@
 import Express from "express";
-import prisma from "../client/client";
+import prisma from "./client/client";
 
 const app = Express();
 
@@ -18,6 +18,8 @@ app.get("/test", (req, res) => {
     });
 });
 
-app.listen(3000, () => console.log("Server ready on port 3000."));
+app.listen(process.env.PORT, () =>
+  console.log(`Server ready on port: ${process.env.PORT}`)
+);
 
 export default app;
