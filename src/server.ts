@@ -3,6 +3,7 @@ import router from "./router";
 import { errorMiddleware } from "./middleware/error";
 
 const app = Express();
+app.use(Express.json());
 
 app.use(router);
 

@@ -1,7 +1,4 @@
 import { Request, Response } from "express";
-import { BadRequestError } from "../helpers/api-error";
-import prisma from "../client/client";
-import bcrypt from "bcrypt";
 
 export class SignUpController {
   async create(req: Request, res: Response) {
@@ -31,6 +28,12 @@ export class SignUpController {
 
     const { password: _, ...userData } = createUser; */
 
-    return res.send("funcionou");
+    return res.json({
+      name,
+      email,
+      password,
+      phone,
+      role,
+    });
   }
 }
