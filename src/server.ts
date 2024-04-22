@@ -1,5 +1,6 @@
 import "express-async-errors";
 import Express from "express";
+import path from "path";
 import router from "./router";
 import { errorMiddleware } from "./middleware/error";
 import prisma from "./client/client";
@@ -17,6 +18,8 @@ prisma
   .catch((error: Error) => {
     throw new Error(error.message);
   });
+
+app.use("/docs", Express.static(path.join(__dirname, "public")));
 
 app.use(errorMiddleware);
 app.listen(process.env.PORT, () =>

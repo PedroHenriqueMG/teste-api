@@ -13,7 +13,7 @@ const token = z.string().openapi({
 });
 
 export const document = createDocument({
-  openapi: "3.1.0",
+  openapi: "3.0.0",
   info: {
     title: "Barber Shop API",
     description: "Melhor API do Brasil",
@@ -22,7 +22,11 @@ export const document = createDocument({
   servers: [
     {
       url: "https://teste-api-smoky.vercel.app",
-      description: "testando o teste",
+      description: "produção",
+    },
+    {
+      url: "http://localhost:8080/docs/",
+      description: "desenvolvimento",
     },
   ],
   paths: {
