@@ -5,9 +5,9 @@ import bcrypt from "bcrypt";
 
 export class SignUpController {
   async create(req: Request, res: Response) {
-    /* const { name, email, password, phone, role } = req.body;
+    const { name, email, password, phone, role } = req.body;
 
-    const emailExist = await prisma.user.findUnique({
+    /* const emailExist = await prisma.user.findUnique({
       where: {
         email: email,
       },
@@ -31,6 +31,12 @@ export class SignUpController {
 
     const { password: _, ...userData } = createUser; */
 
-    return res.send("hello word");
+    return res.json({
+      name,
+      email,
+      password,
+      phone,
+      role,
+    });
   }
 }
