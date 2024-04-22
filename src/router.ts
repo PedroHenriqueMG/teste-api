@@ -1,6 +1,8 @@
 import { Router } from "express";
 import { SignUpController } from "./controllers/SignUpController";
 import prisma from "./client/client";
+import { validate } from "./middleware/zod-middleware";
+import { signupSchema } from "./@types/signupSchema";
 const router = Router();
 
 router.get("/", (req, res) => {
@@ -16,6 +18,6 @@ router.get("/test", (req, res) => {
       throw new Error(error.message);
     });
 });
-router.post("/signup", new SignUpController().create);
+router.post("/signup", validate(signupSchema), new SignUpController().create);
 
 export default router;
