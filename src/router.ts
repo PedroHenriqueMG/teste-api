@@ -3,6 +3,8 @@ import { SignUpController } from "./controllers/SignUpController";
 import prisma from "./client/client";
 import { validate } from "./middleware/zod-middleware";
 import { signupSchema } from "./@types/signupSchema";
+import { SignInController } from "./controllers/SignInController";
+import { signInSchema } from "./@types/signinSchema";
 const router = Router();
 
 router.get("/", (req, res) => {
@@ -19,5 +21,6 @@ router.get("/test", (req, res) => {
     });
 });
 router.post("/signup", validate(signupSchema), new SignUpController().create);
+router.post("/signin", validate(signInSchema), new SignInController().login);
 
 export default router;
