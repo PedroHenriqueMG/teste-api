@@ -6,7 +6,7 @@ const app = Express();
 
 app.use(router);
 
-app.use(errorMiddleware);
+/* app.use(errorMiddleware); */
 app.listen(process.env.PORT, () =>
   console.log(`Server ready on port: ${process.env.PORT}`)
 );
