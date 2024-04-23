@@ -17,7 +17,7 @@ const token = z.string().openapi({
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTM0NzMyNzUsImV4cCI6MTcxMzUwMjA3NX0.J9UdB_g2_z_3GQ7ctnRLAIhm3X5FjqPlDlfpo9Rciog",
 });
 
-export const document = createDocument({
+const document = createDocument({
   openapi: "3.0.0",
   info: {
     title: "Barber Shop API",
@@ -86,3 +86,6 @@ export const document = createDocument({
     },
   },
 });
+
+
+export const swaggeryaml = stringify(document, { aliasDuplicateObjects: false });

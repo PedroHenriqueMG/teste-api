@@ -4,8 +4,6 @@ import { validate } from "./middleware/zod-middleware";
 import { signupSchema } from "./@types/signupSchema";
 import { SignInController } from "./controllers/SignInController";
 import { signInSchema } from "./@types/signinSchema";
-import swaggerui from "swagger-ui-express";
-import { document } from "./swagger/swagger";
 
 const router = Router();
 
