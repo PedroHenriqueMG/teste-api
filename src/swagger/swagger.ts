@@ -86,9 +86,3 @@ export const document = createDocument({
     },
   },
 });
-
-
-const yaml = stringify(document, { aliasDuplicateObjects: false });
-
-// eslint-disable-next-line no-sync
-fs.writeFileSync(path.join(__dirname, 'openapi.yml'), yaml);
