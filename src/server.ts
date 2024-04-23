@@ -6,7 +6,7 @@ import prisma from "./client/client";
 import swaggerui from "swagger-ui-express";
 import { document } from "./swagger/swagger";
 import * as yaml from "yaml";
-import * as fs from "fs";
+
 
 const app = Express();
 app.use(Express.json());
@@ -22,8 +22,8 @@ prisma
     throw new Error(error.message);
   });
 
-const file = fs.readFileSync("./src/swagger/openapi.yml", "utf8");
-const teste = yaml.parse(file);
+const foda = "./swagger/openapi.yml"
+const teste = yaml.parse(foda);
 
 const CSS_URL =
   "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.3.0/swagger-ui.min.css";
