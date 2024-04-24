@@ -3,10 +3,7 @@ import { createDocument, extendZodWithOpenApi } from "zod-openapi";
 import { signupSchema } from "../@types/signupSchema";
 import { signInSchema } from "../@types/signinSchema";
 
-import fs from 'fs';
-import path from 'path';
-
-import { stringify } from 'yaml';
+import { stringify } from "yaml";
 
 extendZodWithOpenApi(z);
 
@@ -58,7 +55,7 @@ const document = createDocument({
         },
       },
     },
-    "/login": {
+    "/signin": {
       post: {
         tags: ["User"],
         requestBody: {
@@ -87,5 +84,6 @@ const document = createDocument({
   },
 });
 
-
-export const swaggeryaml = stringify(document, { aliasDuplicateObjects: false });
+export const swaggeryaml = stringify(document, {
+  aliasDuplicateObjects: false,
+});
