@@ -1,14 +1,18 @@
 import "express-async-errors";
 import Express from "express";
+import cors from "cors";
 import router from "./router";
 import { errorMiddleware } from "./middleware/error";
 import prisma from "./client/client";
 import swaggerui from "swagger-ui-express";
 import { swaggeryaml } from "./swagger/swagger";
 import * as yaml from "yaml";
+import { corsMiddleware } from "./middleware/cors-middleware";
 
 const app = Express();
 app.use(Express.json());
+
+app.use(corsMiddleware, cors());
 
 app.use(router);
 
